@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Tharakesh\\OneDrive - Governors State University\\Desktop\\Group5Flights\\Group5Flights.csproj": {}
+    "C:\\Users\\divya\\OneDrive\\Documents\\internet programming\\GroupFlightApp\\Group5Flight\\Group5Flights.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Tharakesh\\OneDrive - Governors State University\\Desktop\\Group5Flights\\Group5Flights.csproj": {
+    "C:\\Users\\divya\\OneDrive\\Documents\\internet programming\\GroupFlightApp\\Group5Flight\\Group5Flights.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Tharakesh\\OneDrive - Governors State University\\Desktop\\Group5Flights\\Group5Flights.csproj",
+        "projectUniqueName": "C:\\Users\\divya\\OneDrive\\Documents\\internet programming\\GroupFlightApp\\Group5Flight\\Group5Flights.csproj",
         "projectName": "Group5Flights",
-        "projectPath": "C:\\Users\\Tharakesh\\OneDrive - Governors State University\\Desktop\\Group5Flights\\Group5Flights.csproj",
-        "packagesPath": "C:\\Users\\Tharakesh\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Tharakesh\\OneDrive - Governors State University\\Desktop\\Group5Flights\\obj\\",
+        "projectPath": "C:\\Users\\divya\\OneDrive\\Documents\\internet programming\\GroupFlightApp\\Group5Flight\\Group5Flights.csproj",
+        "packagesPath": "C:\\Users\\divya\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\divya\\OneDrive\\Documents\\internet programming\\GroupFlightApp\\Group5Flight\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Tharakesh\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\divya\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
@@ -38,7 +38,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.300"
+        "SdkAnalysisLevel": "10.0.100"
       },
       "frameworks": {
         "net9.0": {
@@ -62,7 +62,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.310/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

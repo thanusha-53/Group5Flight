@@ -19,19 +19,13 @@ app.UseRouting();
 app.UseAuthorization();
 app.MapControllerRoute(
     name: "areas",
-    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+    pattern: "{area:exists}/{controller}/{action=Index}/{id?}"
 );
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}"
 );
-app.MapStaticAssets();
-
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}")
-    .WithStaticAssets();
 
 
 app.Run();

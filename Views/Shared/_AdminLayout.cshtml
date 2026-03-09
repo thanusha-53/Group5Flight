@@ -1,0 +1,39 @@
+@{
+    Layout = "_Layout";
+    var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
+    var currentAction = ViewContext.RouteData.Values["action"]?.ToString();
+}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+
+        <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+                <a class="nav-link @(currentAction == "Index" ? "active" : "")"
+                   asp-area="Admin" asp-controller="Users" asp-action="Index">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link @(currentAction == "Manage" ? "active" : "")"
+                   asp-area="Admin" asp-controller="Users" asp-action="Manage">Manage Users</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link @(currentAction == "Rights" ? "active" : "")"
+                   asp-area="Admin" asp-controller="Users" asp-action="Rights">Rights & Obligations</a>
+            </li>
+        </ul>
+
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <!-- WORKING: root area / home page -->
+                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">
+                    View Site
+                </a>
+            </li>
+        </ul>
+
+    </div>
+</nav>
+
+<div class="container mt-4">
+    @RenderBody()
+</div>
