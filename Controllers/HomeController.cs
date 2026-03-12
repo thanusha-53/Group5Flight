@@ -1,31 +1,23 @@
-using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using Group5Flights.Models;
 
-namespace Group5Flights.Controllers;
-
-public class HomeController : Controller
+namespace Group5Flight.Controllers
 {
-    private readonly ILogger<HomeController> _logger;
-
-    public HomeController(ILogger<HomeController> logger)
+    public class HomeController : Controller
     {
-        _logger = logger;
-    }
+        // Client Dashboard
+        public IActionResult Index()
+        {
+            return View();
+        }
 
-    public IActionResult Index()
-    {
-        return View();
-    }
+        public IActionResult Search()
+        {
+            return Content("Client searching flights");
+        }
 
-    public IActionResult Privacy()
-    {
-        return View();
-    }
-
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
-    {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        public IActionResult Privacy()
+        {
+            return Content("Client privacy page");
+        }
     }
 }

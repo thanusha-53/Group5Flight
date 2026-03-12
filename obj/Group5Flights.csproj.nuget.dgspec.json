@@ -1,25 +1,31 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\divya\\OneDrive\\Documents\\internet programming\\GroupFlightApp\\Group5Flight\\Group5Flights.csproj": {}
+    "C:\\Users\\ashit\\OneDrive\\Desktop\\Group5Flight\\Group5Flights.csproj": {}
   },
   "projects": {
-    "C:\\Users\\divya\\OneDrive\\Documents\\internet programming\\GroupFlightApp\\Group5Flight\\Group5Flights.csproj": {
+    "C:\\Users\\ashit\\OneDrive\\Desktop\\Group5Flight\\Group5Flights.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\divya\\OneDrive\\Documents\\internet programming\\GroupFlightApp\\Group5Flight\\Group5Flights.csproj",
+        "projectUniqueName": "C:\\Users\\ashit\\OneDrive\\Desktop\\Group5Flight\\Group5Flights.csproj",
         "projectName": "Group5Flights",
-        "projectPath": "C:\\Users\\divya\\OneDrive\\Documents\\internet programming\\GroupFlightApp\\Group5Flight\\Group5Flights.csproj",
-        "packagesPath": "C:\\Users\\divya\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\divya\\OneDrive\\Documents\\internet programming\\GroupFlightApp\\Group5Flight\\obj\\",
+        "projectPath": "C:\\Users\\ashit\\OneDrive\\Desktop\\Group5Flight\\Group5Flights.csproj",
+        "packagesPath": "C:\\Users\\ashit\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ashit\\OneDrive\\Desktop\\Group5Flight\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\divya\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\ashit\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -54,6 +60,24 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[9.0.13, 9.0.13]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[9.0.13, 9.0.13]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[9.0.13, 9.0.13]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[9.0.13, 9.0.13]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -62,7 +86,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

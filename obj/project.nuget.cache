@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "D9MR3AVcR/o=",
+  "dgSpecHash": "nwAnqKkreug=",
   "success": true,
-  "projectFilePath": "C:\\Users\\divya\\OneDrive\\Documents\\internet programming\\GroupFlightApp\\Group5Flight\\Group5Flights.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\ashit\\OneDrive\\Desktop\\Group5Flight\\Group5Flights.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ashit\\.nuget\\packages\\microsoft.netcore.app.ref\\9.0.13\\microsoft.netcore.app.ref.9.0.13.nupkg.sha512",
+    "C:\\Users\\ashit\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\9.0.13\\microsoft.windowsdesktop.app.ref.9.0.13.nupkg.sha512",
+    "C:\\Users\\ashit\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\9.0.13\\microsoft.aspnetcore.app.ref.9.0.13.nupkg.sha512",
+    "C:\\Users\\ashit\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\9.0.13\\microsoft.netcore.app.host.win-x64.9.0.13.nupkg.sha512"
+  ],
   "logs": []
 }
