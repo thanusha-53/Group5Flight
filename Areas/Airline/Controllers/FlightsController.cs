@@ -5,6 +5,7 @@ namespace Group5Flight.Areas.Airline.Controllers
     [Area("Airline")]
     public class FlightsController : Controller
     {
+<<<<<<< HEAD
         // Airline Dashboard
         public IActionResult Index()
         {
@@ -22,5 +23,16 @@ namespace Group5Flight.Areas.Airline.Controllers
         {
             return Content("Airline regulations");
         }
+=======
+        public IActionResult Index()
+    {
+        return RedirectToAction("Manage");
+    }
+        public IActionResult Manage()
+    {
+        return Content("Airline Manage Flights Page");
+    }
+
+>>>>>>> 30118906f581719ecf98770c296a8907428a3225
     }
 }
