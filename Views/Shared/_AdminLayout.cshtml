@@ -1,8 +1,14 @@
 @{
+<<<<<<< HEAD
     Layout = "~/Views/Shared/_Layout.cshtml";
 
     var currentAction = ViewContext.RouteData.Values["action"]?.ToString();
     var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
+=======
+    Layout = "_Layout";
+    var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
+    var currentAction = ViewContext.RouteData.Values["action"]?.ToString();
+>>>>>>> cd2ce3cfe5472f433741ae167933c3f4f5fea2ce
 }
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
