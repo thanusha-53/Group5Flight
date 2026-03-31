@@ -1,0 +1,83 @@
+@* Admin Layout *@
+@{
+    Layout = null; // standalone layout
+    var currentAction = ViewContext.RouteData.Values["action"]?.ToString();
+    var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Admin - Group5Flights</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="bg-primary text-white p-3 mb-3">
+        <div class="container">
+            <h2>Group5Flights - Admin</h2>
+        </div>
+    </header>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
+        <div class="container">
+            <!-- Brand for mobile -->
+            <a class="navbar-brand d-lg-none" href="/Admin/Users/Index">Admin</a>
+
+            <!-- Toggle button for mobile -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#adminNavbar"
+                    aria-controls="adminNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navbar links -->
+            <div class="collapse navbar-collapse" id="adminNavbar">
+
+                <!-- Left side links -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link @(currentAction == "Index" && currentController == "Users" ? "active" : "")"
+                           href="/Admin/Users/Index">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @(currentAction == "Manage" && currentController == "Users" ? "active" : "")"
+                           href="/Admin/Users/Manage">Manage Users</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @(currentAction == "Rights" && currentController == "Users" ? "active" : "")"
+                           href="/Admin/Users/Rights">Rights & Obligations</a>
+                    </li>
+                </ul>
+
+                <!-- Right side: View Site -->
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/" target="_blank">View Site</a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main content -->
+    <div class="container mt-4">
+        @RenderBody()
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-light text-center p-3 mt-5 border-top">
+        <div class="container">
+            <p>Contact: info@group5flights.com | &copy; 2026 Group5Flights</p>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -20,7 +20,7 @@ namespace Group5Flight.Controllers
             return Content("Client privacy page");
         }
 
-        //  New test action for routing
+        //  This is the new test action
         public IActionResult TestRouting()
         {
             return Content("Routing test works!");
