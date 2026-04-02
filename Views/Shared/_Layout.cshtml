@@ -1,4 +1,11 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http
+
+@{
+    var selected = Context.Session.GetString("SelectedFlights");
+    var count = string.IsNullOrEmpty(selected) ? 0 : selected.Split(',').Length;
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -13,8 +20,21 @@
 
     <!-- HEADER (COMMON) -->
     <header class="border-bottom mb-3">
-        <div class="container">
+        <div class="container d-flex justify-content-between align-items-center">
+            
+            <!-- LEFT: Title -->
             <h2>Group5Flights</h2>
+
+            <!-- RIGHT: Badge -->
+            <div>
+                <span style="font-weight:bold;">
+                    Selected Flights
+                </span>
+                <span style="color:white; background:red; padding:5px 10px; border-radius:15px;">
+                    @count
+                </span>
+            </div>
+
         </div>
     </header>
 

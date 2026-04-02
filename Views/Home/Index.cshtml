@@ -15,7 +15,9 @@
                 <option value="">All</option>
                 @foreach (var city in Model.FromCities)
                 {
-                    <option value="@city">@city</option>
+                    <option value="@city" selected="@(Model.From == city)">
+                        @city
+                    </option>
                 }
             </select>
 
@@ -25,7 +27,9 @@
                 <option value="">All</option>
                 @foreach (var city in Model.ToCities)
                 {
-                    <option value="@city">@city</option>
+                    <option value="@city" selected="@(Model.To == city)">
+                        @city
+                    </option>
                 }
             </select>
 
@@ -38,7 +42,9 @@
             <select asp-for="CabinType" class="form-control">
                 @foreach (var c in Model.CabinTypes)
                 {
-                    <option value="@c">@c</option>
+                    <option value="@c" selected="@(Model.CabinType == c)">
+                        @c
+                    </option>
                 }
             </select>
 
@@ -50,12 +56,19 @@
     <!-- RIGHT: RESULTS PANEL -->
     <div class="col-md-8">
 
+        @if (TempData["Message"] != null)
+        {
+            <div class="alert alert-success">
+                @TempData["Message"]
+            </div>
+        }
+
         @foreach (var flight in Model.Flights)
         {
             <div class="card mb-3 p-3">
 
                 <div class="row">
-                    
+
                     <!-- Airline Image -->
                     <div class="col-md-2">
                         <img src="~/images/@flight.Airline.ImageName" width="60" />
@@ -65,7 +78,7 @@
                     <div class="col-md-6">
                         <strong>@flight.Airline.Name</strong><br />
                         @flight.DepartureTime - @flight.ArrivalTime<br />
-                        Duration: @(flight.ArrivalTime - flight.DepartureTime)
+                        Duration: @flight.DepartureTime - @flight.ArrivalTime
                     </div>
 
                     <!-- Extra Info -->
@@ -76,8 +89,9 @@
 
                 </div>
 
-                <a asp-action="Details" asp-route-id="@flight.FlightId" class="btn btn-sm btn-outline-primary mt-2">
-                    Details
+                <!-- 🔥 YOUR FEATURE -->
+                <a asp-action="Details" asp-route-id="@flight.FlightId" class="btn btn-sm btn-primary mt-2">
+                    View Details
                 </a>
 
             </div>

@@ -1,10 +1,6 @@
+using Group5Flight.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Http;
-using Group5Flight.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Group5Flight.Controllers
 {
@@ -24,14 +20,12 @@ namespace Group5Flight.Controllers
                 .Include(f => f.Airline)
                 .AsQueryable();
 
-            // Get session values
             var from = HttpContext.Session.GetString("From");
             var to = HttpContext.Session.GetString("To");
             var cabin = HttpContext.Session.GetString("CabinType");
             var dateStr = HttpContext.Session.GetString("Date");
             var airlineIdStr = HttpContext.Session.GetString("AirlineId");
 
-            // Apply filters
             if (!string.IsNullOrEmpty(from))
                 flights = flights.Where(f => f.From == from);
 
@@ -46,17 +40,16 @@ namespace Group5Flight.Controllers
                 var date = DateTime.Parse(dateStr);
                 flights = flights.Where(f => f.Date == date);
             }
+
             if (!string.IsNullOrEmpty(airlineIdStr))
             {
                 int id = int.Parse(airlineIdStr);
                 flights = flights.Where(f => f.AirlineId == id);
             }
 
-            // Build ViewModel
             var vm = new HomeViewModel
             {
                 Flights = flights.ToList(),
-
                 From = from ?? "",
                 To = to ?? "",
                 CabinType = cabin ?? "All",
@@ -66,15 +59,8 @@ namespace Group5Flight.Controllers
                 Airlines = _context.Airlines.ToList(),
                 AirlineId = string.IsNullOrEmpty(airlineIdStr) ? null : int.Parse(airlineIdStr),
 
-                FromCities = _context.Flights
-                    .Select(f => f.From)
-                    .Distinct()
-                    .ToList(),
-
-                ToCities = _context.Flights
-                    .Select(f => f.To)
-                    .Distinct()
-                    .ToList(),
+                FromCities = _context.Flights.Select(f => f.From).Distinct().ToList(),
+                ToCities = _context.Flights.Select(f => f.To).Distinct().ToList(),
 
                 CabinTypes = new List<string>
                 {
@@ -92,7 +78,7 @@ namespace Group5Flight.Controllers
             HttpContext.Session.SetString("From", vm.From ?? "");
             HttpContext.Session.SetString("To", vm.To ?? "");
             HttpContext.Session.SetString("CabinType", vm.CabinType ?? "All");
-            HttpContext.Session.SetString("AirlineId",vm.AirlineId?.ToString() ?? "");
+            HttpContext.Session.SetString("AirlineId", vm.AirlineId?.ToString() ?? "");
 
             if (vm.DepartureDate.HasValue)
                 HttpContext.Session.SetString("Date", vm.DepartureDate.Value.ToString("yyyy-MM-dd"));
@@ -108,6 +94,45 @@ namespace Group5Flight.Controllers
         public IActionResult TestRouting()
         {
             return Content("Routing test works!");
+        }
+
+        // 🔥 ADD THESE INSIDE CLASS
+
+        public IActionResult Details(int id)
+        {
+            var flight = _context.Flights
+                .Include(f => f.Airline)
+                .FirstOrDefault(f => f.FlightId == id);
+
+            return View(flight);
+        }
+
+        [HttpPost]
+        public IActionResult Select(int id)
+        {
+            var selected = HttpContext.Session.GetString("SelectedFlights");
+
+            List<int> selectedList;
+
+            if (string.IsNullOrEmpty(selected))
+            {
+                selectedList = new List<int>();
+            }
+            else
+            {
+                selectedList = selected.Split(',').Select(int.Parse).ToList();
+            }
+
+            if (!selectedList.Contains(id))
+            {
+                selectedList.Add(id);
+            }
+
+            HttpContext.Session.SetString("SelectedFlights", string.Join(",", selectedList));
+
+            TempData["Message"] = "Flight selected successfully!";
+
+            return RedirectToAction("Index");
         }
     }
 }

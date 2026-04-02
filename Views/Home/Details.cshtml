@@ -1,0 +1,45 @@
+@model Group5Flight.Models.Flight
+
+<h2>Flight Details</h2>
+
+<!--  Flight Code (Generated) -->
+<p>Flight Code: FL-@Model.FlightId</p>
+
+<p>Flight ID: @Model.FlightId</p>
+<p>From: @Model.From</p>
+<p>To: @Model.To</p>
+<p>Date: @Model.Date.ToShortDateString()</p>
+
+<p>Departure: @Model.DepartureTime</p>
+<p>Arrival: @Model.ArrivalTime</p>
+
+<!--  Duration (Proper Calculation) -->
+@{
+    var duration = Model.ArrivalTime - Model.DepartureTime;
+}
+<p>Duration: @duration.TotalHours hours</p>
+
+<!--  Aircraft Type (Predefined logic) -->
+@{
+    string aircraftType = Model.FlightId % 2 == 0
+        ? "Airbus 320 Family"
+        : "Boeing 737 Family";
+}
+<p>Aircraft: @aircraftType</p>
+
+<p>Cabin: @Model.CabinType</p>
+
+<p>Airline: @(Model.Airline != null ? Model.Airline.Name : "Not Available")</p>
+<p>Airline ID: @Model.AirlineId</p>
+
+<p>Emission: @Model.Emission</p>
+<p>Price: @Model.Price</p>
+
+<br />
+
+<a asp-action="Index">Back to Home</a>
+
+<form asp-action="Select" method="post">
+    <input type="hidden" name="id" value="@Model.FlightId" />
+    <button type="submit" class="btn btn-primary">Select</button>
+</form>
