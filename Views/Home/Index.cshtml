@@ -1,8 +1,87 @@
-﻿@{
+﻿@model Group5Flight.Models.HomeViewModel
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center user-dashboard">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="row">
+
+    <!-- LEFT: FILTER PANEL -->
+    <div class="col-md-4">
+        <form asp-action="Filter" method="post">
+
+            <!-- FROM -->
+            <label>From</label>
+            <select asp-for="From" class="form-control">
+                <option value="">All</option>
+                @foreach (var city in Model.FromCities)
+                {
+                    <option value="@city">@city</option>
+                }
+            </select>
+
+            <!-- TO -->
+            <label>To</label>
+            <select asp-for="To" class="form-control">
+                <option value="">All</option>
+                @foreach (var city in Model.ToCities)
+                {
+                    <option value="@city">@city</option>
+                }
+            </select>
+
+            <!-- DATE -->
+            <label>Departure Date</label>
+            <input asp-for="DepartureDate" type="date" class="form-control" />
+
+            <!-- CABIN -->
+            <label>Cabin Type</label>
+            <select asp-for="CabinType" class="form-control">
+                @foreach (var c in Model.CabinTypes)
+                {
+                    <option value="@c">@c</option>
+                }
+            </select>
+
+            <br />
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+    </div>
+
+    <!-- RIGHT: RESULTS PANEL -->
+    <div class="col-md-8">
+
+        @foreach (var flight in Model.Flights)
+        {
+            <div class="card mb-3 p-3">
+
+                <div class="row">
+                    
+                    <!-- Airline Image -->
+                    <div class="col-md-2">
+                        <img src="~/images/@flight.Airline.ImageName" width="60" />
+                    </div>
+
+                    <!-- Flight Info -->
+                    <div class="col-md-6">
+                        <strong>@flight.Airline.Name</strong><br />
+                        @flight.DepartureTime - @flight.ArrivalTime<br />
+                        Duration: @(flight.ArrivalTime - flight.DepartureTime)
+                    </div>
+
+                    <!-- Extra Info -->
+                    <div class="col-md-4">
+                        Emission: @flight.Emission<br />
+                        Price: $@flight.Price
+                    </div>
+
+                </div>
+
+                <a asp-action="Details" asp-route-id="@flight.FlightId" class="btn btn-sm btn-outline-primary mt-2">
+                    Details
+                </a>
+
+            </div>
+        }
+
+    </div>
 </div>
