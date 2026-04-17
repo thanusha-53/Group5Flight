@@ -2,6 +2,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Group5Flight.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Group5Flight.Areas.Airline.Controllers
 {
@@ -141,6 +144,13 @@ namespace Group5Flight.Areas.Airline.Controllers
 
             TempData["Message"] = $"Flight {flightCode} deleted successfully";
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult CheckFlightCodeAndDate(string FlightCode, DateTime Date)
+        {
+            var exists = _context.Flights.Any(f => f.FlightCode == FlightCode && f.Date.Date == Date.Date);
+            return Json(!exists);
         }
 
         private FlightEditViewModel CreateFlightEditViewModel(Flight flight)
